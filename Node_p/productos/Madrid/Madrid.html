@@ -782,6 +782,72 @@ footer a:hover .social-icon {
 }
 
 @media (max-width: 640px) {
+  /* Ajustes para imágenes de productos en el carrusel general */
+  .producto {
+    width: 220px; /* Aumentar el ancho del producto */
+    flex: 0 0 220px;
+  }
+  .producto img {
+    height: 180px; /* Aumentar la altura de la imagen */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .producto .contenido {
+    height: 80px; /* Ajustar el contenedor de texto para balancear */
+    font-size: 0.8rem;
+  }
+
+  /* Ajustes para el carrusel de imágenes del producto destacado */
+  .carousel-image {
+    max-height: 360px; /* Aumentar la altura de la imagen principal */
+    width: 100% !important;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .image-carousel {
+    max-width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+  }
+
+  .thumbnail {
+    width: 40px !important; /* Aumentar ligeramente las miniaturas */
+    height: 40px !important;
+  }
+
+  .image-arrow {
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Ajustes para el producto destacado */
+  .featured-image img {
+    max-height: 300px; /* Aumentar la altura de la imagen destacada */
+    width: 100% !important;
+    object-fit: cover;
+  }
+
+  .product-section {
+    margin-top: 80px; /* Ajustar el margen superior */
+    padding: 10px;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+
+  .product-details {
+    padding: 10px;
+  }
+
+  .product-details h1 {
+    font-size: 1.8rem; /* Reducir ligeramente el título para balancear */
+  }
+
+  .product-details .price {
+    font-size: 1.2rem;
+  }
+
   .flex.items-center.gap-4 {
     gap: 4px;
   }
@@ -860,17 +926,6 @@ footer a:hover .social-icon {
   .carousel-slides {
     gap: 8px;
   }
-  .producto {
-    width: 200px;
-    flex: 0 0 200px;
-  }
-  .producto img {
-    height: 140px;
-  }
-  .producto .contenido {
-    height: 60px;
-    font-size: 0.75rem;
-  }
   #custom-notification {
     max-width: 180px;
     padding: 6px 10px;
@@ -899,17 +954,8 @@ footer a:hover .social-icon {
     width: 2.5rem;
     height: 2.5rem;
   }
-  .product-details h1 {
-    font-size: 2rem;
-  }
-  .product-details .price {
-    font-size: 1.25rem;
-  }
   .featured-product {
     padding: 12px;
-  }
-  .featured-image img {
-    max-height: 250px;
   }
   .featured-content h3 {
     font-size: 1.25rem;
@@ -1039,7 +1085,8 @@ footer a:hover .social-icon {
 .dark #menu-content .BTN-PRIMARY.active {
   background-color: #ffcc99;
   color: #333;
-} 
+}
+
 /* Notificación de error */
 .error-notification {
   max-width: 300px;
@@ -1067,6 +1114,7 @@ footer a:hover .social-icon {
   height: 20px;
   stroke-width: 2;
 }
+
 /* Estilos para los botones de talla */
 .size-option {
   background-color: #ffffff; /* Fondo claro por defecto */
@@ -1197,24 +1245,11 @@ footer a:hover .social-icon {
     height: 36px !important;
   }
 }
-
 @media (max-width: 640px) {
-  .carousel-image {
-    max-height: 300px; /* Ajustar para móviles */
-  }
-
-  .image-arrow {
-    font-size: 1.2rem;
-    width: 30px;
-    height: 30px;
-  }
-
-  .thumbnail {
-    width: 32px !important; /* Miniaturas un poco más grandes en móviles */
-    height: 32px !important;
-  }
-}
-
+      #productos-destacados .text-center h2 {
+        margin-top: 20px; /* Adjust this value to move the title lower on mobile */
+      }
+    }
 </style>
 
 
@@ -1325,7 +1360,7 @@ footer a:hover .social-icon {
     </section>
 
 <!-- Producto Destacado -->
-<section class="relative py-8 sm:py-12 bg-white dark:bg-gray-900 overflow-hidden" id="productos-destacados" style="margin-top: 50px;">
+<section class="relative py-8 sm:py-12 bg-white dark:bg-gray-900 overflow-hidden" id="productos-destacados" style="margin-top: 70px;">
   <div class="mx-auto max-w-7xl px-4 lg:px-8">
     <div class="mx-auto max-w-2xl text-center mb-12">
       <h2 class="text-4xl font-bold tracking-tight text-gray-600 dark:text-orange-400 sm:text-5xl">
