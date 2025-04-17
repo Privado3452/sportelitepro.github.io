@@ -314,6 +314,18 @@ h2, h3 {
   color: #ff9500;
   background: none;
 }
+.carousel-slides .producto {
+  border-radius: 8px; /* Redondea las esquinas del contenedor */
+  overflow: hidden; /* Recorta cualquier contenido que sobresalga */
+}
+
+.carousel-slides .producto img {
+  border-radius: 8px 8px 0 0; /* Redondea solo las esquinas superiores de la imagen */
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+  height: 200px; /* Mantiene la altura definida */
+  object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+  display: block; /* Evita espacios adicionales */
+}
 
 /* Menú de categorías */
 .categories-container {
@@ -980,11 +992,11 @@ footer a:hover .social-icon {
   cursor: pointer;
   transform: scale(1);
   transition: all 0.05s ease-in-out;
-  max-width: 200px;
+  max-width: 145px;
   width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  font-size: 0.9rem;
   font-weight: normal;
   display: flex;
   gap: 0.5rem;
@@ -998,11 +1010,11 @@ footer a:hover .social-icon {
 }
 #menu-content nav button:hover {
   background-color: #ffcc99;
-  color: #333; /* Mantener texto oscuro al pasar el ratón */
+  color: #333;
 }
 .dark #menu-content nav button:hover {
   background-color: #ffcc99;
-  color: #333; /* Texto oscuro para contraste con fondo claro */
+  color: #333;
 }
 #menu-content nav button.active {
   background-color: #ffcc99;
@@ -1015,11 +1027,11 @@ footer a:hover .social-icon {
 
 /* Botón Únase a nosotros */
 #menu-content .BTN-SECONDARY {
-  max-width: 200px;
+  max-width: 155px;
   width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  font-size: 0.9rem;
   white-space: nowrap;
   font-weight: normal;
   color: #333; /* Texto oscuro en modo claro */
@@ -1046,6 +1058,44 @@ footer a:hover .social-icon {
   color: #333;
 }
 .dark #menu-content .BTN-SECONDARY.active {
+  background-color: #ffcc99;
+  color: #333;
+}
+
+/* Botón Contáctenos */
+#menu-content a.BTN-PRIMARY {
+  max-width: 150px !important; /* Alineado con los demás botones */
+  width: 100% !important;
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+  font-size: 0.9rem !important;
+  white-space: nowrap;
+  font-weight: normal;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #ff9500;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.dark #menu-content a.BTN-PRIMARY {
+  color: #fff;
+}
+#menu-content a.BTN-PRIMARY:hover {
+  background-color: #ffcc99;
+  color: #333;
+}
+.dark #menu-content a.BTN-PRIMARY:hover {
+  background-color: #ffcc99;
+  color: #333;
+}
+#menu-content a.BTN-PRIMARY.active {
+  background-color: #ffcc99;
+  color: #333;
+}
+.dark #menu-content a.BTN-PRIMARY.active {
   background-color: #ffcc99;
   color: #333;
 }
@@ -1317,7 +1367,7 @@ footer a:hover .social-icon {
                 <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
               </div>
             </a>
-            <a href="../../../Sobrenosotros.html#contactanos" class="BTN-PRIMARY max-w-[200px] w-full px-6 group text-[16px] whitespace-nowrap font-normal flex gap-2 items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 hover:transition-all hover:duration-300 text-white" style="height: 48px;">
+            <a href="../../../Sobrenosotros.html#contactanos" class="BTN-PRIMARY w-full whitespace-nowrap font-normal flex gap-2 items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 hover:transition-all hover:duration-300 text-white" style="height: 48px;">
               <div class="overflow-hidden text-ellipsis">Contáctenos</div>
               <div class="text-sm group-hover:translate-x-1 transition-all">
                 <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>

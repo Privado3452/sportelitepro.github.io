@@ -286,56 +286,76 @@
               height: 40px;
             }
           }
+          @media (max-width: 767px) {
+  .menu-content nav button,
+  .menu-content a {
+    max-width: 150px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .BTN-PRIMARY {
+    max-width: 150px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
         </style>
                 <script src="https://cdn.tailwindcss.com"></script>
               
-                  <header class="menu-fixed">
-                    <div class="header-container">
-                      <div class="w-full mx-auto max-w-7xl h-full flex items-center justify-between px-4">
-                        <div class="flex items-center">
-                          <img class="object-cover" alt="Logo de Sport Elite Línea Deportiva" src="img/image.png" style="height: 50px;">
-                        </div>
-              
-                        <!-- Botón hamburguesa visible solo en móviles -->
-                        <button class="md:hidden text-black" id="menu-toggle">
-                          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                          </svg>
-                        </button>
-              
-                        <!-- Contenido del menú -->
-                        <div class="menu-content flex-col md:flex-row items-center justify-center gap-5 w-full" id="menu-content">
-                          <nav class="w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-[16px]">
-                            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[200px] w-full md:w-fit px-6 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
-                              <a href="index.html">Inicio</a>
-                            </button>
-                            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[200px] w-full md:w-fit px-6 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
-                              <a href="productos.html">Productos</a>
-                            </button>
-                            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[200px] w-full md:w-fit px-6 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
-                              <a href="Sobrenosotros.html">Sobre Nosotros</a>
-                            </button>
-                          </nav>
+                <header class="menu-fixed">
+                  <div class="header-container">
+                    <div class="w-full mx-auto max-w-7xl h-full flex items-center justify-between px-4">
+                      <div class="flex items-center">
+                        <img class="object-cover" alt="Logo de Sport Elite Línea Deportiva" src="img/image.png" style="height: 50px;">
+                      </div>
+                
+                      <!-- Botón hamburguesa visible solo en móviles -->
+                      <button class="md:hidden text-black" id="menu-toggle">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                      </button>
+                
+                      <!-- Contenido del menú -->
+                      <div class="menu-content flex-col md:flex-row items-center justify-center gap-5 w-full" id="menu-content">
+                        <nav class="w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-[16px]">
+                          <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[150px] w-full md:w-fit px-4 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
+                            <a href="index.html">Inicio</a>
+                          </button>
+                          <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[150px] w-full md:w-fit px-4 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
+                            <a href="productos.html">Productos</a>
+                          </button>
+                          <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 max-w-[150px] w-full md:w-fit px-4 font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 hover:transition-all hover:duration-300" style="height: 48px;">
+                            <a href="Sobrenosotros.html">Sobre Nosotros</a>
+                          </button>
+                        </nav>
+                        <div class="w-full flex flex-col md:flex-row items-center justify-end gap-3 pb-4 md:pb-0">
+                          <a href="#contactanos"  class="max-w-[200px] w-full md:w-fit px-6 text-[16px] whitespace-nowrap font-normal text-black hover:text-gray-700 flex gap-2 items-center justify-center rounded-full hover:bg-gray-200" style="height: 48px;">
+                            <div class="overflow-hidden text-ellipsis">Contáctenos</div>
+                            <div class="text-sm hover:text-gray-700">
+                              <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+                            </div>
+                          </a>
 
-                          <div class="w-full flex flex-col md:flex-row items-center justify-end gap-3 pb-4 md:pb-0">
-    <a href="Sobrenosotros.html#contactanos" class="max-w-[200px] w-full md:w-fit px-6 text-[16px] whitespace-nowrap font-normal text-black hover:text-gray-700 flex gap-2 items-center justify-center rounded-full hover:bg-gray-200" style="height: 48px;">
-      <div class="overflow-hidden text-ellipsis">Contáctenos</div>
-      <div class="text-sm hover:text-gray-700">
-        <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
-      </div>
-    </a>
-    <a href="node_p/tienda.html" class="BTN-PRIMARY max-w-[200px] w-full px-6 group text-[16px] whitespace-nowrap font-normal flex gap-2 items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white" style="height: 48px;">
-      <div class="overflow-hidden text-ellipsis">Tienda</div>
-      <div class="text-sm group-hover:translate-x-1 transition-all">
-        <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
-      </div>
-    </a>
-  </div>
-                          </div>
+                          <a href="Node_p/tienda.html" class="BTN-PRIMARY max-w-[150px] w-full md:w-fit px-4 text-[16px] whitespace-nowrap font-normal flex gap-2 items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 text-white" style="height: 48px;">
+                            <div class="overflow-hidden text-ellipsis">Tienda</div>
+                            <div class="text-sm group-hover:translate-x-1 transition-all">
+                              <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+                            </div>
+                          </a>
                         </div>
                       </div>
                     </div>
-                  </header>
+                  </div>
+                </header>
+
+                         
+                       
                                         
                   <script>
                     // Control del scroll para ocultar/mostrar el header
