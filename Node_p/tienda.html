@@ -98,35 +98,41 @@
     .carousel-slides {
       pointer-events: auto;
     }
-    /* Producto */
-    .producto {
-      pointer-events: auto;
-      width: 300px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      overflow: hidden;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      background-color: #fff;
-      scroll-snap-align: center;
-    }
-    .producto:hover {
-      transform: scale(1.05);
-      box-shadow: 4px 4px 15px rgba(0,0,0,0.4);
-      z-index: 20;
-    }
-    .producto img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      margin: 0;
-    }
+    
+   /* Producto */
+.producto {
+  pointer-events: auto;
+  width: 300px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.producto:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.4);
+  z-index: 20;
+}
+
+.producto img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain; /* Cambiado de cover a contain para evitar recortes */
+  display: block;
+  margin: 0;
+  border-radius: 8px 8px 0 0;
+}
+    
     .producto .contenido {
       padding: 10px;
       text-align: center;
@@ -237,68 +243,91 @@
       background: none;
     }
     /* Carrusel */
-    .carousel {
-      position: relative;
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
-      overflow-x: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      padding: 15px 0;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-    }
-    .carousel::-webkit-scrollbar {
-      display: none;
-    }
-    .carousel-slides {
-      display: flex;
-      flex-shrink: 0;
-      gap: 10px;
-    }
-    .carousel-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 1600px;
-      margin: 40px auto;
-      overflow: hidden;
-    }
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 2rem;
-      z-index: 20;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    }
-    .carousel-arrow-left {
-      left: 15px;
-    }
-    .carousel-arrow-right {
-      right: 15px;
-    }
-    .carousel-arrow:hover {
-      color: #ff9500;
-      background: none;
-    }
-    .carousel-slides .producto {
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .carousel-slides .producto img {
-      border-radius: 8px 8px 0 0;
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden; /* Evita desbordamiento vertical */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 15px 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 20;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.carousel-arrow-left {
+  left: 15px;
+}
+.carousel-arrow-right {
+  right: 15px;
+}
+.carousel-arrow:hover {
+  color: #ff9500;
+  background: none;
+}
+.carousel-slides {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+  align-items: flex-start; /* Alineación superior */
+  transition: transform 0.3s ease-in-out;
+}
+.carousel-slides .producto {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.carousel-slides .producto img {
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 200px;
+  object-fit: contain; /* Cambiado de cover a contain */
+  display: block;
+}
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 640px) {
+  .producto {
+    width: 200px;
+  }
+
+  .producto img {
+    height: 140px;
+    object-fit: contain; /* Asegura que no se recorte en móviles */
+  }
+
+  .carousel {
+    padding: 10px 0;
+  }
+
+  .carousel-slides {
+    justify-content: center;
+  }
+}
+
     /* Estilos para el menú de categorías */
     .categories-container {
       position: relative;
@@ -1159,7 +1188,7 @@
               </div>
               <div class="producto" data-nombre="Uniforme Real Madrid">
                 <a href="productos/Madrid/Madrid.html" class="product-link">
-                  <img src="https://via.placeholder.com/150" alt="Uniforme Real Madrid">
+                  <img src="img/realcamiseta.png" alt="Uniforme Real Madrid">
                   <div class="contenido">
                     <p>Uniforme Real Madrid</p>
                     <p class="precio">$30.000</p>
