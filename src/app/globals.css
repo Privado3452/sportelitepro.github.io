@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/* Tailwind dark: variant → responde a la clase .dark en <html> */
+@variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════════════
+   JEDYX SPORT – Design Tokens (estáticos, sin cambio de tema)
+   ═══════════════════════════════════════════════════════════ */
+@theme inline {
+  --color-sky-100: #E8F8FF;
+  --color-sky-200: #8ECAE6;
+  --color-sky-300: #6BB7D9;
+  --color-bluegreen-400: #219EBC;
+  --color-bluegreen-500: #1A7F96;
+  --color-prussian-600: #023047;
+  --color-prussian-700: #012133;
+  --color-prussian-800: #011724;
+  --color-prussian-900: #000B12;
+  --color-yellow-300: #FFB703;
+  --color-yellow-400: #E6A503;
+  --color-orange-400: #FB8500;
+  --color-orange-500: #D67000;
+  --color-orange-600: #B35D00;
+  --font-heading: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CSS VARIABLES – MODO CLARO (por defecto)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --bg-page:    #f0f7ff;
+  --bg-alt:     #e4f1fb;
+  --bg-card:    rgba(255, 255, 255, 0.82);
+  --border-card: rgba(33, 158, 188, 0.20);
+  --text-1:     #023047;
+  --text-2:     rgba(2, 48, 71, 0.60);
+  --text-3:     rgba(2, 48, 71, 0.38);
+  --text-4:     rgba(2, 48, 71, 0.24);
+  --glass-bg:   rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(33, 158, 188, 0.18);
+  --glass-dark-bg:   rgba(2, 48, 71, 0.92);
+  --glass-dark-border: rgba(142, 202, 230, 0.18);
+  --grid-line:  rgba(33, 158, 188, 0.07);
+  --scrollbar-track: #e4f1fb;
+  --neon-cyan:  #0284c7;
+  --neon-purple: #7c3aed;
+  /* Gradientes de sección */
+  --section-features-bg: #e4f1fb;
+  --section-products-bg: radial-gradient(ellipse 70% 50% at 80% 50%, rgba(14,165,233,0.10) 0%, #f0f7ff 60%);
+  --section-testimonials-bg: linear-gradient(180deg, #f0f7ff 0%, #e4f1fb 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CSS VARIABLES – MODO OSCURO (.dark en <html>)
+   ═══════════════════════════════════════════════════════════ */
+.dark {
+  --bg-page:    #040d18;
+  --bg-alt:     #020810;
+  --bg-card:    rgba(7, 22, 38, 0.70);
+  --border-card: rgba(33, 158, 188, 0.15);
+  --text-1:     #e2e8f0;
+  --text-2:     rgba(142, 202, 230, 0.55);
+  --text-3:     rgba(142, 202, 230, 0.35);
+  --text-4:     rgba(142, 202, 230, 0.20);
+  --glass-bg:   rgba(4, 13, 24, 0.75);
+  --glass-border: rgba(33, 158, 188, 0.12);
+  --glass-dark-bg:   rgba(2, 8, 16, 0.90);
+  --glass-dark-border: rgba(33, 158, 188, 0.10);
+  --grid-line:  rgba(33, 158, 188, 0.04);
+  --scrollbar-track: #020810;
+  --neon-cyan:  #00d4ff;
+  --neon-purple: #a855f7;
+  --section-features-bg: #020810;
+  --section-products-bg: radial-gradient(ellipse 70% 50% at 80% 50%, rgba(33,158,188,0.06) 0%, #040d18 60%);
+  --section-testimonials-bg: linear-gradient(180deg, #040d18 0%, #020810 100%);
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+::selection { background-color: #219EBC; color: #ffffff; }
+
+/* ── Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #219EBC, var(--neon-purple));
+  border-radius: 3px;
+}
+
+/* ── Keyframes ────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(1deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+  50%       { box-shadow: 0 0 60px rgba(0, 212, 255, 0.7), 0 0 120px rgba(168, 85, 247, 0.3); }
+}
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.90) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Utility animations ───────────────────────────────── */
+.animate-float        { animation: float 5s ease-in-out infinite; }
+.animate-pulse-glow   { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-rotate-slow  { animation: rotate-slow 20s linear infinite; }
+.animate-gradient     { animation: gradient-shift 6s ease infinite; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* ── Glass Effects (usan CSS variables) ───────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-card);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-dark {
+  background: var(--glass-dark-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-dark-border);
+}
+
+/* ── Gradient Text ────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #219EBC, #FB8500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-hero {
+  background: linear-gradient(135deg, var(--neon-cyan) 0%, #219EBC 30%, #FB8500 70%, var(--neon-purple) 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.gradient-text-neon {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Neon Effects ─────────────────────────────────────── */
+.neon-border {
+  border: 1px solid rgba(33, 158, 188, 0.25);
+  box-shadow: 0 0 20px rgba(33, 158, 188, 0.06), inset 0 0 20px rgba(33, 158, 188, 0.03);
+}
+
+/* ── Grid Background (usa variable) ──────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Section Semantic Backgrounds ────────────────────── */
+.bg-page    { background-color: var(--bg-page); }
+.bg-alt     { background-color: var(--bg-alt); }
+.section-features  { background-color: var(--section-features-bg); }
+.section-products  { background: var(--section-products-bg); }
+.section-testimonials { background: var(--section-testimonials-bg); }
+.bg-hero {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(33, 158, 188, 0.12) 0%, var(--bg-page) 65%);
+}
+
+/* ── Scrollbar hide ──────────────────────────────────── */
+.scrollbar-hide { scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+.modal-panel {
+  background: var(--modal-bg, var(--bg-page));
+  border-left: 1px solid var(--border-card);
+}
+
+:root          { --modal-bg: rgba(240, 247, 255, 0.98); }
+.dark          { --modal-bg: rgba(4, 13, 24, 0.98); }
+
+/* ── Scroll Reveal ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── CTA Glow Button ──────────────────────────────────── */
+.btn-glow { position: relative; overflow: hidden; }
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+}

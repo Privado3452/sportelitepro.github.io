@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"c:\\\\Users\\\\Duberney\\\\Music\\\\Novex-Sport\")"
+    ]
+  }
+}

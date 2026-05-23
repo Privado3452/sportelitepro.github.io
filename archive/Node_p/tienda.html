@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JEDYX SPORT - Línea Deportiva</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="output.css">
+  <style>
+:root {
+  --ai-create-color-theme-50: #E8F8FF;
+  --ai-create-color-theme-100: #8ECAE6;
+  --ai-create-color-theme-200: #219EBC;
+  --ai-create-color-theme-300: #FFB703;
+  --ai-create-color-theme-400: #FB8500;
+  --ai-create-color-theme-500: #FB8500;
+  --ai-create-color-theme-600: #D67000;
+  --ai-create-color-theme-700: #023047;
+  --ai-create-color-theme-800: #012133;
+  --ai-create-color-theme-900: #011724;
+  --ai-create-color-theme-950: #000B12;
+  --custom-heading-font: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --custom-body-font: Outfit, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+   @font-face {
+  font-family: 'DIN Next Pro';
+  src: url('fonts/din-next-pro-bold.woff2') format('woff2'),
+       url('fonts/din-next-pro-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DIN Next Pro';
+  src: url('path/to/din-next-pro-bold.woff2') format('woff2'),
+       url('path/to/din-next-pro-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+.menu-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+  width: 100%;
+}
+.menu-hidden {
+  transform: translateY(-100%);
+}
+#menu-content.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(243, 244, 246, 0.9);
+  padding: 12px;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 5px;
+}
+.logo-img {
+  height: 50px;
+  background-color: transparent;
+  width: auto;
+  object-fit: cover;
+}
+.boton-agregar {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  z-index: 10;
+  position: relative;
+}
+.producto {
+  pointer-events: auto;
+}
+.carousel {
+  pointer-events: auto;
+}
+.carousel-slides {
+  pointer-events: auto;
+}
+
+/* Producto */
+.producto {
+  pointer-events: auto;
+  width: 300px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.producto:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.4);
+  z-index: 20;
+}
+
+.producto img {
+  width: 100%;
+  height: 280px; /* Unchanged for desktop */
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  border-radius: 8px 8px 0 0;
+  padding-top: 30px; /* Unchanged for desktop */
+  object-position: center top; /* Aligns top of image with top of frame */
+}
+
+.producto .contenido {
+  padding: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+}
+.producto .contenido .precio {
+  font-weight: bold;
+  color: #28a745;
+  font-size: 0.9rem;
+}
+.producto .boton-agregar {
+  background-color: #000;
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.producto .boton-agregar:hover {
+  background-color: #333;
+}
+.producto .boton-agregar svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+}
+.precio {
+  font-weight: bold;
+  color: #28a745;
+}
+/* Banner Styles */
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 100px auto 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+.slides .slide {
+  min-width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+.slide-content {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 50%;
+}
+.slide-content h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+.slide-content p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 10;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.arrow-left {
+  left: 15px;
+}
+.arrow-right {
+  right: 15px;
+}
+.arrow:hover {
+  color: #ff9500;
+  background: none;
+}
+/* Carrusel */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 15px 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 20;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.carousel-arrow-left {
+  left: 15px;
+}
+.carousel-arrow-right {
+  right: 15px;
+}
+.carousel-arrow:hover {
+  color: #ff9500;
+  background: none;
+}
+.carousel-slides {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+  align-items: flex-start;
+  transition: transform 0.3s ease-in-out;
+}
+.carousel-slides .producto {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.carousel-slides .producto img {
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 280px; /* Unchanged for desktop */
+  object-fit: contain;
+  display: block;
+  padding-top: 30px; /* Unchanged for desktop */
+  object-position: center top; /* Aligns top of image with top of frame */
+}
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 640px) {
+  .producto {
+    width: 200px;
+  }
+
+  .producto img {
+    height: 180px; /* Increased height for larger image on mobile */
+    object-fit: contain;
+    padding-top: 15px; /* Unchanged for mobile */
+    object-position: center top; /* Aligns top of image with top of frame */
+  }
+
+  .carousel {
+    padding: 10px 0;
+  }
+
+  .carousel-slides {
+    justify-content: center;
+  }
+
+  .carousel-slides .producto img {
+    height: 180px; /* Increased height for larger image on mobile */
+    object-fit: contain;
+    padding-top: 15px; /* Unchanged for mobile */
+    object-position: center top; /* Aligns top of image with top of frame */
+  }
+}
+
+/* Estilos para el menú de categorías */
+.categories-container {
+  position: relative;
+  display: inline-block;
+}
+.categories-btn {
+  background-color: transparent;
+  color: #000 !important;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dark .categories-btn {
+  color: #000 !important;
+}
+.categories-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 100;
+  border-radius: 8px;
+  top: 100%;
+  left: 0;
+}
+.categories-container:hover .categories-dropdown {
+  display: block;
+}
+.category-item {
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+.category-item:hover {
+  background-color: #f5f5f5;
+  color: #ff9500;
+}
+/* Estilo para el nombre de la marca */
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+.dark .brand-name {
+  color: #000;
+}
+/* Modal del Carrito y Confirmación */
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+.cart-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+.cart-modal-content h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.cart-modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.cart-modal-content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.cart-modal-content .remove-item {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+.cart-modal-content .remove-item:hover {
+  background: #cc0000;
+}
+.cart-modal-content .total {
+  font-weight: bold;
+  text-align: right;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.cart-modal-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff9500;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cart-modal-content .close-btn:hover {
+  background: #e68a00;
+}
+.cart-modal-content .buy-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.cart-modal-content .buy-btn:hover {
+  background-color: #218838;
+}
+/* Estilos para los resultados de búsqueda */
+#search-results {
+  display: none;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#search-results.active {
+  display: block;
+}
+#search-results h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+#search-results .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+/* Estilos para la notificación personalizada */
+#custom-notification {
+  max-width: 250px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+#custom-notification.show {
+  opacity: 1;
+}
+#custom-notification svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+@media (max-width: 640px) {
+  #custom-notification {
+    max-width: 180px;
+    padding: 6px 10px;
+    top: 100px;
+    font-size: 0.75rem;
+  }
+  #custom-notification svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+/* Estilos para el contador del carrito */
+#cart-count {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff9500;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: center;
+}
+#cart-count.active {
+  display: flex;
+}
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 640px) {
+  .flex.items-center.gap-4 {
+    gap: 4px;
+  }
+  #search-form {
+    width: 32px;
+    position: relative;
+    transition: width 0.3s ease;
+  }
+  #search-form.active {
+    width: 150px;
+  }
+  #search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  #search-form.active #search-input {
+    width: 100%;
+    padding: 6px 24px 6px 8px;
+    opacity: 1;
+    border: 1px solid #ddd;
+  }
+  #search-form button {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px;
+  }
+  #search-form:not(.active) #search-input {
+    display: none;
+  }
+  .categories-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .categories-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  #cart-button svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+  }
+  #menu-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+  .categories-dropdown {
+    min-width: 150px;
+  }
+  .brand-name {
+    font-size: 1rem;
+    margin-left: 4px;
+  }
+  .producto {
+    width: 200px;
+  }
+  .producto img {
+    height: 180px;
+  }
+  .producto .contenido {
+    height: 60px;
+  }
+  .carousel {
+    padding: 10px 0;
+  }
+  .carousel-slides {
+    justify-content: center;
+  }
+}
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: #FFFFFF; /* Fondo blanco en estado normal */
+  border: 1px solid #E5E7EB; /* Borde gris claro para visibilidad */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color:rgb(44, 44, 44); /* Texto negro en estado normal */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: var(--custom-body-font); /* Usa Lato, consistente con el sitio */
+  z-index: 9999;
+}
+
+.whatsapp-btn:hover {
+  background:rgb(37, 172, 86); /* Verde WhatsApp al pasar el mouse */
+  border-color: transparent; /* Elimina el borde en hover */
+  color: #FFFFFF; /* Texto blanco al pasar el mouse */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--ai-create-color-theme-100); /* Sombra con color del tema */
+}
+
+.whatsapp-btn img {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  /* Removed filter: brightness(0) to show original image colors */
+}
+
+.whatsapp-btn:hover img {
+  /* No filter on hover to maintain original image colors */
+}
+
+.whatsapp-btn span {
+  white-space: nowrap;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 640px) {
+  .whatsapp-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .whatsapp-btn img {
+    width: 20px;
+    height: 20px;
+  }
+}
+#root {
+  height: 120vh;
+}
+footer .social-icon {
+  fill: #ffffff !important;
+}
+footer a:hover .social-icon {
+  fill: #ffffff !important;
+}
+@media (max-width: 640px) {
+  footer .TEXT-LINK {
+    font-size: 0.9rem;
+  }
+  footer .DESC {
+    font-size: 0.75rem;
+  }
+  footer ._icon-wrapper_1a3wa_1 {
+    font-size: 1.25rem;
+  }
+  footer .inline-flex {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+@media (max-width: 640px) {
+  #cart-button {
+    margin-right: 8px;
+    transform: translateX(-4px);
+  }
+}
+@media (max-width: 640px) {
+  .categories-dropdown {
+    display: none;
+  }
+  .categories-dropdown.active {
+    display: block;
+  }
+  .categories-container:hover .categories-dropdown {
+    display: none;
+  }
+  .categories-container.active .categories-dropdown {
+    display: block;
+  }
+}
+#currency-toggle {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -20px;
+  right: 40px;
+  z-index: 10;
+}
+@media (max-width: 640px) {
+  #currency-toggle {
+    font-size: 0.6rem;
+    right: 30px;
+    top: -18px;
+  }
+}
+/* Estilos para botones del menú desde Inicio hasta Contáctenos */
+#menu-content nav button {
+  padding: 1rem;
+  color: #000;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 0.05s ease-in-out;
+  max-width: 145px;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: none;
+}
+.dark #menu-content nav button {
+  color: #000;
+}
+#menu-content nav button:hover {
+  background-color: #ffcc99;
+  color: #000;
+}
+.dark #menu-content nav button:hover {
+  background-color: #ffcc99;
+  color: #000;
+}
+#menu-content nav button.active {
+  background-color: #ffcc99;
+  color: #000;
+}
+.dark #menu-content nav button.active {
+  background-color: #ffcc99;
+  color: #000;
+}
+/* Botón Únase a nosotros */
+#menu-content .BTN-SECONDARY {
+  max-width: 155px;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  font-weight: normal;
+  color: #000;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: none;
+}
+.dark #menu-content .BTN-SECONDARY {
+  color: #000;
+}
+#menu-content .BTN-SECONDARY:hover {
+  background-color: #ffcc99;
+  color: #000;
+}
+.dark #menu-content .BTN-SECONDARY:hover {
+  background-color: #ffcc99;
+  color: #000;
+}
+#menu-content .BTN-SECONDARY.active {
+  background-color: #ffcc99;
+  color: #000;
+}
+.dark #menu-content .BTN-SECONDARY.active {
+  background-color: #ffcc99;
+  color: #000;
+}
+/* Botón Contáctenos */
+#menu-content a.BTN-PRIMARY {
+  max-width: 150px !important;
+  width: 100% !important;
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+  font-size: 0.9rem !important;
+  white-space: nowrap;
+  font-weight: normal;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #ff9500;
+  color: #000 !important;
+  transition: all 0.3s ease;
+}
+.dark #menu-content a.BTN-PRIMARY {
+  color: #000 !important;
+}
+#menu-content a.BTN-PRIMARY:hover {
+  background-color: #ffcc99;
+  color: #000 !important;
+}
+.dark #menu-content a.BTN-PRIMARY:hover {
+  background-color: #ffcc99;
+  color: #000 !important;
+}
+#menu-content a.BTN-PRIMARY.active {
+  background-color: #ffcc99;
+  color: #000 !important;
+}
+.dark #menu-content a.BTN-PRIMARY.active {
+  background-color: #ffcc99;
+  color: #000 !important;
+}
+/* Botón de Categorías */
+.categories-btn {
+  color: #000 !important;
+}
+.dark .categories-btn {
+  color: #000 !important;
+}
+/* Íconos del menú */
+#cart-button svg,
+#menu-toggle svg {
+  stroke: #000 !important;
+}
+.dark #cart-button svg,
+.dark #menu-toggle svg {
+  stroke: #000 !important;
+}
+    
+</style>
+
+
+</head>
+<body class="bg-white dark:bg-gray-900">
+  <main>
+    <header class="menu-fixed bg-gray-100/90 dark:bg-gray-800/90 shadow-md rounded-b-2xl">
+      <div class="w-full h-full flex items-center justify-between px-4" style="padding-top: 12px; padding-bottom: 12px;">
+        <div class="flex items-center">
+          <img class="logo-img _image_bh1ht_4" alt="Logo de JEDYX SPORT Línea Deportiva" src="img/image.png">
+          <div class="brand-name">JEDYX SPORT <span>.</span></div>
+        </div>
+        <div class="flex items-center gap-4 relative">
+          <form class="relative flex items-center" id="search-form" onsubmit="event.preventDefault(); performSearch();">
+            <input type="text" placeholder="Buscar productos..." class="w-48 sm:w-64 px-4 py-2 text-sm text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" id="search-input">
+            <button type="submit" class="absolute right-2 p-1 text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </button>
+          </form>
+          <div class="categories-container">
+            <button class="categories-btn">
+              <span>Categorías</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="categories-dropdown">
+              <a href="#uniformes-section" class="category-item">Uniformes Futbol</a>
+              <a href="#clubes-section" class="category-item">Uniformes Basquet</a>
+              <a href="#zapatillas-section" class="category-item">Zapatillas</a>
+              <a href="#accesorios-section" class="category-item">Accesorios</a>
+            </div>
+          </div>
+          <!-- Botón de cambio de moneda añadido aquí -->
+          <button id="currency-toggle" class="absolute -top-5 text-xs text-gray-600 hover:text-orange-500 dark:text-gray-300 dark:hover:text-orange-400">Cambiar a USD</button>
+          <button class="text-black dark:text-white hover:text-orange-500 dark:hover:text-orange-400 relative" id="cart-button">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+          </button>
+          <button class="text-black" id="menu-toggle">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden flex-col items-center justify-center gap-5 w-full" id="menu-content">
+          <nav class="w-full flex flex-col items-center justify-center gap-4 text-[16px]">
+            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 dark:text-black dark:hover:text-gray-700 BTN-SECONDARY max-w-[200px] w-full px-6 group text-[16px] font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 hover:transition-all hover:duration-300" style="height: 48px;">
+              <a href="../index.html">Inicio</a>
+            </button>
+            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 dark:text-black dark:hover:text-gray-700 BTN-SECONDARY max-w-[200px] w-full px-6 group text-[16px] font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 hover:transition-all hover:duration-300" style="height: 48px;">
+              <a href="../productos.html">Productos</a>
+            </button>
+            <button class="py-4 text-black hover:text-gray-700 whitespace-nowrap cursor-pointer hover:scale-105 transition-all duration-50 dark:text-black dark:hover:text-gray-700 BTN-SECONDARY max-w-[200px] w-full px-6 group text-[16px] font-normal flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 hover:transition-all hover:duration-300" style="height: 48px;">
+              <a href="../Sobrenosotros.html">Sobre Nosotros</a>
+            </button>
+          </nav>
+          <div class="w-full flex flex-col items-center justify-end gap-3 pb-4">
+            <a href="../Sobrenosotros.html#unase-a-nosotros" class="BTN-SECONDARY max-w-[200px] w-full px-6 group text-[16px] whitespace-nowrap font-normal text-black hover:text-gray-700 dark:text-black dark:hover:text-gray-700 flex gap-2 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 hover:transition-all hover:duration-300" style="height: 48px;">
+              <div class="_editable_jwu41_1 overflow-hidden text-ellipsis">Únase a nosotros</div>
+              <div class="_icon-wrapper_1a3wa_1 text-sm text-black hover:text-gray-700 dark:text-black dark:hover:text-gray-700 group-hover:translate-x-1 transition-all">
+                <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+              </div>
+            </a>
+            <a href="../Sobrenosotros.html#contactanos" class="BTN-PRIMARY max-w-[200px] w-full px-6 group text-[16px] whitespace-nowrap font-normal flex gap-2 items-center justify-center rounded-full bg-orange-500 hover:bg-orange-600 hover:transition-all hover:duration-300 text-white" style="height: 48px;">
+              <div class="overflow-hidden text-ellipsis">Contáctenos</div>
+              <div class="text-sm group-hover:translate-x-1 transition-all">
+                <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false" data prefixes="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Modal del Carrito -->
+    <div class="cart-modal" id="cart-modal">
+      <div class="cart-modal-content">
+        <button class="close-btn" id="close-cart">X</button>
+        <h3>Carrito de Compras</h3>
+        <ul id="cart-items"></ul>
+        <p class="total" id="cart-total">Total: $0.00</p>
+        <button class="buy-btn" id="buy-button">Comprar</button>
+      </div>
+    </div>
+
+    <!-- Modal de Confirmación de Compra -->
+    <div class="cart-modal" id="confirm-modal">
+      <div class="cart-modal-content" style="background-color: #1e1e24; color: white; border: 1px solid #333; position: relative;">
+        <button class="close-btn" id="close-confirm" style="position: absolute; top: 10px; right: 10px; background: #ff9500; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">X</button>
+        <h3 style="color: #f97316; margin-bottom: 15px; text-align: center; font-size: 1.5rem; font-weight: bold;">Confirmar Pedido</h3>
+        
+        <div style="margin-bottom: 15px; text-align: left;">
+          <span style="font-size: 0.85rem; color: #aaa; font-weight: 600;">Detalles del Pedido:</span>
+          <pre id="confirm-details" style="background-color: #2e2e38; padding: 10px; border-radius: 6px; font-size: 0.8rem; max-height: 120px; overflow-y: auto; color: #ddd; margin-top: 5px; white-space: pre-wrap; font-family: sans-serif; border: 1px solid #444;"></pre>
+        </div>
+
+        <form id="order-form" style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+          <div>
+            <label for="customer-name" style="display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; font-weight: 600;">Nombre Completo *</label>
+            <input type="text" id="customer-name" required style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #444; background-color: #2e2e38; color: white; font-size: 0.9rem;" placeholder="Ej. Juan Pérez">
+          </div>
+          <div>
+            <label for="customer-email" style="display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; font-weight: 600;">Correo Electrónico *</label>
+            <input type="email" id="customer-email" required style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #444; background-color: #2e2e38; color: white; font-size: 0.9rem;" placeholder="Ej. juan@correo.com">
+          </div>
+          <div>
+            <label for="customer-phone" style="display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; font-weight: 600;">Teléfono / WhatsApp *</label>
+            <input type="tel" id="customer-phone" required style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #444; background-color: #2e2e38; color: white; font-size: 0.9rem;" placeholder="Ej. +573023218968">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+            <button type="button" class="buy-btn" id="send-whatsapp" style="background-color: #25d366; font-weight: bold; border: none; padding: 12px; color: white; border-radius: 5px; cursor: pointer; text-align: center; font-size: 1rem; width: 100%; display: block; transition: background-color 0.3s;">
+              Enviar por WhatsApp
+            </button>
+            <button type="button" class="buy-btn" id="send-email" style="background-color: #f97316; font-weight: bold; border: none; padding: 12px; color: white; border-radius: 5px; cursor: pointer; text-align: center; font-size: 1rem; width: 100%; display: block; transition: background-color 0.3s;">
+              Enviar por Correo
+            </button>
+            <button type="button" class="buy-btn" id="cancel-confirm" style="background-color: #555; font-weight: bold; border: none; padding: 10px; color: white; border-radius: 5px; cursor: pointer; text-align: center; font-size: 1rem; width: 100%; display: block; transition: background-color 0.3s;">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+   
+    <section class="banner">
+      <div class="slides" id="slides">
+        <a href="zapatillas-elite-speed.html" class="slide" style="background-image: url('img/f7.jpg');">
+          <div class="slide-content">
+            <h3>Entrena como Profesional</h3>
+            <p>Zapatillas Elite Speed - Máximo rendimiento en cada paso.</p>
+          </div>
+        </a>
+        <a href="uniforme-pro.html" class="slide" style="background-image: url('img/f8.jpg');">
+          <div class="slide-content">
+            <h3>Domina la Cancha</h3>
+            <p>Uniformes Pro - Diseñados para la victoria.</p>
+          </div>
+        </a>
+        <a href="mochila-titan.html" class="slide" style="background-image: url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
+          <div class="slide-content">
+            <h3>Energía sin Límites</h3>
+            <p>Mochila Titan - Lleva tu pasión a todas partes.</p>
+          </div>
+        </a>
+      </div>
+      <button class="arrow arrow-left" id="prev">❮</button>
+      <button class="arrow arrow-right" id="next">❯</button>
+    </section>
+
+    <!-- Sección para resultados de búsqueda -->
+    <section id="search-results">
+      <h2>Resultados de Búsqueda</h2>
+      <div class="contenedor" id="search-results-container"></div>
+    </section>
+
+    <!-- Uniformes Futbol Section -->
+    <section class="relative py-8 sm:py-12 bg-white dark:bg-gray-900 overflow-hidden" id="uniformes-section">
+      <div class="mx-auto max-w-7xl px-1 lg:px-2">
+        <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-4xl font-bold tracking-tight text-black-600 dark:text-orange-400 sm:text-5xl">
+            Uniformes Futbol
+          </h2>
+          <p class="mt-4 text-xl leading-9 text-gray-700 dark:text-white/90">
+            Donde la pasión por el deporte vive. Descubre nuestra línea deportiva premium.
+          </p>
+        </div>
+        <div class="carousel-wrapper">
+          <div class="carousel" id="uniformes-carousel">
+            <div class="carousel-slides" id="uniformes-slides">
+              <div class="producto" data-nombre="Uniforme Francia">
+                <a href="Francia.html" class="product-link">
+                  <img src="https://cdn.a1.art/assets/images/app_1811317900177637378/1811317900181831681/c14a3125-b2c8-4b68-89ba-b47ed701274d.jpeg?format=webp" alt="Uniforme Francia">
+                  <div class="contenido">
+                    <p>Uniforme Francia</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Francia" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Camiseta Colombia">
+                <a href="colombia.html" class="product-link">
+                  <img src="https://cdn.a1.art/assets/images/app_1811317900177637378/1811317900181831681/b9b1c3f1-f68d-421b-b5a4-95dcc8ea6252.jpeg?format=webp" alt="Camiseta Colombia">
+                  <div class="contenido">
+                    <p>Camiseta Colombia</p>
+                    <p class="precio">$40.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Camiseta Colombia" data-price="40000" data-price-usd="10.00">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Alemania">
+                <a href="Alemania.html" class="product-link">
+                  <img src="https://cdn.a1.art/assets/images/app_1811317900177637378/1811317900181831681/9d968de6-ee00-485e-ac46-7225609af4fb.jpeg?format=webp" alt="Uniforme Alemania">
+                  <div class="contenido">
+                    <p>Uniforme Alemania</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Alemania" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Portugal">
+                <a href="Portugal.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Portugal">
+                  <div class="contenido">
+                    <p>Uniforme Portugal</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Portugal" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Italia">
+                <a href="italia.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Italia">
+                  <div class="contenido">
+                    <p>Uniforme Italia</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Italia" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Brasil">
+                <a href="Brasil.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Brasil">
+                  <div class="contenido">
+                    <p>Uniforme Brasil</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Brasil" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Argentina">
+                <a href="Argentina.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Argentina">
+                  <div class="contenido">
+                    <p>Uniforme Argentina</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Argentina" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Camisa Colombia 100 Años">
+                <a href="Colombia100.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Camisa Colombia 100 Años">
+                  <div class="contenido">
+                    <p>Camisa Colombia 100 Años</p>
+                    <p class="precio">$40.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Camisa Colombia 100 Años" data-price="40000" data-price-usd="10.00">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Estados Unidos">
+                <a href="Estados-Unidos.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Estados Unidos">
+                  <div class="contenido">
+                    <p>Uniforme Estados Unidos</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Estados Unidos" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-arrow carousel-arrow-left" id="uniformes-prev">❮</button>
+          <button class="carousel-arrow carousel-arrow-right" id="uniformes-next">❯</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uniformes Basquet Section -->
+    <section id="clubes-section">
+      <div class="mx-auto max-w-7xl px-1 lg:px-2">
+        <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-4xl font-bold tracking-tight text-black-600 dark:text-orange-400 sm:text-5xl">
+            Uniformes Basquet
+          </h2>
+        </div>
+        <div class="carousel-wrapper">
+          <div class="carousel" id="clubes-carousel">
+            <div class="carousel-slides" id="clubes-slides">
+              <div class="producto" data-nombre="Uniforme Liverpool">
+                <a href="liverpool.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Liverpool">
+                  <div class="contenido">
+                    <p>Uniforme Liverpool</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Liverpool" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Barcelona">
+                <a href="productos/barelona/Barcelona.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Barcelona">
+                  <div class="contenido">
+                    <p>Uniforme Barcelona</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Barcelona" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Real Madrid">
+                <a href="productos/Madrid/Madrid.html" class="product-link">
+                  <img src="img/rela .png" alt="Uniforme Real Madrid">
+                  <div class="contenido">
+                    <p>Uniforme Real Madrid</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Real Madrid" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme Manchester City">
+                <a href="Manchester-City.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme Manchester City">
+                  <div class="contenido">
+                    <p>Uniforme Manchester City</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme Manchester City" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Uniforme PSG">
+                <a href="psg.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Uniforme PSG">
+                  <div class="contenido">
+                    <p>Uniforme PSG</p>
+                    <p class="precio">$30.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Uniforme PSG" data-price="30000" data-price-usd="7.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-arrow carousel-arrow-left" id="clubes-prev">❮</button>
+          <button class="carousel-arrow carousel-arrow-right" id="clubes-next">❯</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zapatillas Section -->
+    <section id="zapatillas-section">
+      <div class="mx-auto max-w-7xl px-1 lg:px-2">
+        <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-4xl font-bold tracking-tight text-black-600 dark:text-orange-400 sm:text-5xl">
+            Zapatillas
+          </h2>
+        </div>
+        <div class="carousel-wrapper">
+          <div class="carousel" id="zapatillas-carousel">
+            <div class="carousel-slides" id="zapatillas-slides">
+              <div class="producto" data-nombre="Zapatilla Pro">
+                <a href="Zapatillag.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Zapatilla Pro">
+                  <div class="contenido">
+                    <p>Zapatilla Pro</p>
+                    <p class="precio">$60.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Zapatilla Pro" data-price="60000" data-price-usd="15.00">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Zapatilla Elite">
+                <a href="Zapatilla.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Zapatilla Elite">
+                  <div class="contenido">
+                    <p>Zapatilla Elite</p>
+                    <p class="precio">$70.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Zapatilla Elite" data-price="70000" data-price-usd="17.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Zapatilla Clásico">
+                <a href="Zapatilla-clasico.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Zapatilla Clásico">
+                  <div class="contenido">
+                    <p>Zapatilla Clásico</p>
+                    <p class="precio">$45.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Zapatilla Clásico" data-price="45000" data-price-usd="11.25">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-arrow carousel-arrow-left" id="zapatillas-prev">❮</button>
+          <button class="carousel-arrow carousel-arrow-right" id="zapatillas-next">❯</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accesorios Section -->
+    <section id="accesorios-section">
+      <div class="mx-auto max-w-7xl px-1 lg:px-2">
+        <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-4xl font-bold tracking-tight text-black-600 dark:text-orange-400 sm:text-5xl">
+            Accesorios
+          </h2>
+        </div>
+        <div class="carousel-wrapper">
+          <div class="carousel" id="accesorios-carousel">
+            <div class="carousel-slides" id="accesorios-slides">
+              <div class="producto" data-nombre="Equipo Pro">
+                <a href="Equipo-pro.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Pro">
+                  <div class="contenido">
+                    <p>Equipo Pro</p>
+                    <p class="precio">$60.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Pro" data-price="60000" data-price-usd="15.00">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Equipo Elite">
+                <a href="Equipo-elite.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Elite">
+                  <div class="contenido">
+                    <p>Equipo Elite</p>
+                    <p class="precio">$70.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Elite" data-price="70000" data-price-usd="17.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Equipo Sport">
+                <a href="Equipo-Sport.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Sport">
+                  <div class="contenido">
+                    <p>Equipo Sport</p>
+                    <p class="precio">$70.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Sport" data-price="70000" data-price-usd="17.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Equipo Lop">
+                <a href="Equipo-lop.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Lop">
+                  <div class="contenido">
+                    <p>Equipo Lop</p>
+                    <p class="precio">$70.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Lop" data-price="70000" data-price-usd="17.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Equipo Cal">
+                <a href="Equipo-Cal.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Cal">
+                  <div class="contenido">
+                    <p>Equipo Cal</p>
+                    <p class="precio">$70.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Cal" data-price="70000" data-price-usd="17.50">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="producto" data-nombre="Equipo Clásico">
+                <a href="Equipo-clasico.html" class="product-link">
+                  <img src="https://via.placeholder.com/150" alt="Equipo Clásico">
+                  <div class="contenido">
+                    <p>Equipo Clásico</p>
+                    <p class="precio">$45.000</p>
+                  </div>
+                </a>
+                <button class="boton-agregar" data-name="Equipo Clásico" data-price="45000" data-price-usd="11.25">
+                  Agregar
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-arrow carousel-arrow-left" id="accesorios-prev">❮</button>
+          <button class="carousel-arrow carousel-arrow-right" id="accesorios-next">❯</button>
+        </div>
+      </div>
+    </section>
+
+<!-- <link rel="stylesheet" href="https://use.typekit.net/abc1234.css"> -->
+<a class="whatsapp-btn" id="whatsapp-btn" href="https://wa.link/eej87k" target="_blank">
+  <img src="img/whatsapp.png" alt="WhatsApp Icon">
+  <span>WhatsApp</span>
+</a>
+    <!-- Notificación personalizada -->
+    <div id="custom-notification" class="fixed top-10 right-10 bg-green-600 text-white p-2 rounded-lg shadow-lg flex items-center opacity-0 transition-opacity duration-500 z-50">
+      <span id="notification-message"></span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+  </main>
+
+  <footer class="py-10 bg-gray-900 dark:bg-gray-700">
+    <div class="px-4 mx-auto max-w-7xl flex flex-col items-center gap-8">
+      <!-- Navegación del footer -->
+      <ul class="w-full max-w-4xl grid grid-cols-2 gap-6 text-left sm:grid-cols-3 md:grid-cols-5 md:gap-20 md:text-center">
+        <li>
+          <a href="../index.html" class="text-lg font-medium text-white hover:text-gray-300 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap">
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a href="../productos.html" class="text-lg font-medium text-white hover:text-gray-300 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap">
+            Productos
+          </a>
+        </li>
+        <li>
+          <a href="../Sobrenosotros.html" class="text-lg font-medium text-white hover:text-gray-300 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap">
+            Sobre Nosotros
+          </a>
+        </li>
+        <li>
+          <a href="../Sobrenosotros.html#contactanos" class="text-lg font-medium text-white hover:text-gray-300 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap">
+            Contáctanos
+          </a>
+        </li>
+        <li>
+          <a href="tienda.html" class="text-lg font-medium text-white hover:text-gray-300 dark:hover:text-gray-300 transition-colors duration-200 whitespace-nowrap">
+            Tienda
+          </a>
+        </li>
+      </ul>
+  
+      <!-- Redes sociales y copyright -->
+      <div class="flex flex-col items-center gap-6">
+        <ul class="flex items-center justify-center gap-4">
+          <li>
+            <a href="https://facebook.com/SportELite" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-gray-500 focus:outline-none focus:bg-gray-600 transition-all duration-200">
+              <img src="img/facebook.png" alt="Facebook" class="w-5 h-5">
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/SportElite" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-gray-500 focus:outline-none focus:bg-gray-600 transition-all duration-200">
+              <img src="img/insta.png" alt="Instagram" class="w-5 h-5">
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/SportElite" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-gray-500 focus:outline-none focus:bg-gray-600 transition-all duration-200">
+              <img src="img/x.png" alt="X" class="w-5 h-5">
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-gray-500 focus:outline-none focus:bg-gray-600 transition-all duration-200">
+              <img src="img/whatsapp.png" alt="WhatsApp" class="w-5 h-5">
+            </a>
+          </li>
+        </ul>
+        <p class="text-base font-normal text-white text-center">
+          © 2025 JEDYX SPORT. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+
+ 
+
+  <script>
+// Variables globales
+let productosOriginales = [];
+let cart = [];
+let showUSD = false;
+let isProcessing = false;
+
+// Cargar carrito desde localStorage
+try {
+  const storedCart = localStorage.getItem('cart');
+  if (storedCart) {
+    cart = JSON.parse(storedCart);
+    if (!Array.isArray(cart)) cart = [];
+  }
+} catch (e) {
+  console.error('Error al cargar el carrito desde localStorage:', e);
+  cart = [];
+}
+
+// Modo oscuro por defecto
+document.documentElement.classList.add('dark');
+console.log("JavaScript cargado correctamente en tienda.html");
+
+// Guardar carrito en localStorage
+function saveCart() {
+  try {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  } catch (e) {
+    console.error('Error al guardar en localStorage:', e);
+    localStorage.clear();
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+}
+
+// Mostrar notificación
+function showNotification(message) {
+  const notification = document.getElementById('custom-notification');
+  const notificationMessage = document.getElementById('notification-message');
+  if (notification && notificationMessage) {
+    notificationMessage.textContent = message;
+    notification.style.display = 'flex';
+    notification.classList.add('show');
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.style.display = 'none', 500);
+    }, 3000);
+  }
+}
+
+// Actualizar contador del carrito
+function updateCartCount() {
+  const cartCount = document.getElementById('cart-count');
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+    cartCount.classList.toggle('active', cart.length > 0);
+  }
+}
+
+// Agregar al carrito
+function addToCart(event) {
+  if (isProcessing) return;
+  isProcessing = true;
+
+  const button = event.target.closest('.boton-agregar');
+  if (!button) {
+    isProcessing = false;
+    return;
+  }
+
+  const name = button.getAttribute('data-name');
+  const price = parseFloat(button.getAttribute('data-price') || 0);
+
+  if (name && !isNaN(price)) {
+    cart.push({ name, price });
+    saveCart();
+    showNotification(`${name} agregado al carrito!`);
+    updateCartModal();
+  }
+
+  setTimeout(() => isProcessing = false, 100);
+}
+
+// Actualizar precios según moneda
+function updatePrices() {
+  document.querySelectorAll('.producto').forEach(producto => {
+    const precioElement = producto.querySelector('.precio');
+    const button = producto.querySelector('.boton-agregar');
+    if (precioElement && button) {
+      const priceCOP = parseFloat(button.getAttribute('data-price') || 0);
+      const priceUSD = parseFloat(button.getAttribute('data-price-usd') || 0) || priceCOP / 4000;
+      precioElement.textContent = showUSD
+        ? `$${priceUSD.toFixed(2)} USD`
+        : priceCOP.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 });
+    }
+  });
+  updateCartModal();
+}
+
+// Actualizar modal del carrito
+function updateCartModal() {
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  if (!cartItems || !cartTotal) return;
+
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<li class="text-center text-gray-600 dark:text-gray-300">El carrito está vacío</li>';
+  } else {
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      let formattedPrice = showUSD
+        ? `$${(item.price / 4000).toFixed(2)} USD`
+        : item.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 });
+      li.innerHTML = `
+        <span>${item.name} - ${formattedPrice}</span>
+        <button class="remove-item bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs" data-index="${index}">X</button>
+      `;
+      cartItems.appendChild(li);
+      total += showUSD ? (item.price / 4000) : item.price;
+    });
+
+    cartItems.querySelectorAll('.remove-item').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const index = parseInt(e.target.getAttribute('data-index'));
+        if (!isNaN(index)) {
+          cart.splice(index, 1);
+          saveCart();
+          updateCartModal();
+        }
+      });
+    });
+  }
+
+  cartTotal.textContent = `Total: ${showUSD ? `$${total.toFixed(2)} USD` : total.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}`;
+}
+
+// Función de búsqueda
+function performSearch(searchTerm = null) {
+  const filtro = searchTerm || document.getElementById('search-input').value.toLowerCase().trim();
+  const searchResults = document.getElementById('search-results');
+  const searchResultsContainer = document.getElementById('search-results-container');
+  const sections = [
+    document.getElementById('uniformes-section'),
+    document.getElementById('clubes-section'),
+    document.getElementById('zapatillas-section'),
+    document.getElementById('accesorios-section')
+  ].filter(Boolean);
+
+  if (!searchResults || !searchResultsContainer) return;
+
+  searchResultsContainer.innerHTML = '';
+
+  if (filtro === '') {
+    searchResults.classList.remove('active');
+    sections.forEach(section => section && (section.style.display = 'block'));
+    return;
+  }
+
+  sections.forEach(section => section && (section.style.display = 'none'));
+  searchResults.classList.add('active');
+
+  const productosFiltrados = productosOriginales.filter(producto => {
+    const nombre = producto.getAttribute('data-nombre')?.toLowerCase();
+    return nombre && nombre.includes(filtro);
+  });
+
+  if (productosFiltrados.length === 0) {
+    searchResultsContainer.innerHTML = '<p class="text-center text-gray-600 dark:text-gray-300">No se encontraron productos.</p>';
+  } else {
+    productosFiltrados.forEach(producto => {
+      const clon = producto.cloneNode(true);
+      searchResultsContainer.appendChild(clon);
+    });
+  }
+
+  searchResults.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Banner Slider Logic
+function initializeBanner() {
+  const slidesContainer = document.getElementById('slides');
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
+  const slides = slidesContainer.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+  let autoSlideInterval;
+
+  function updateSlides() {
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlides();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlides();
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide();
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide();
+    });
+  }
+
+  slidesContainer.addEventListener('mouseenter', stopAutoSlide);
+  slidesContainer.addEventListener('mouseleave', startAutoSlide);
+
+  updateSlides();
+  startAutoSlide();
+}
+
+// Inicializar carrusel
+function initializeCarousel(carouselId, slidesId, prevId, nextId) {
+  const carousel = document.getElementById(carouselId);
+  const slides = document.getElementById(slidesId);
+  if (!carousel || !slides) {
+    console.error(`No se encontró el carrusel o los slides para ${carouselId}`);
+    return;
+  }
+
+  const productos = slides.querySelectorAll('.producto');
+  const totalProductos = productos.length;
+  const stepDesktop = 310;
+  const stepMobile = 210;
+  let currentPosition = 0;
+  let isDragging = false;
+  let startX = 0;
+
+  productos.forEach(producto => {
+    const clone = producto.cloneNode(true);
+    const botonAgregar = clone.querySelector('.boton-agregar');
+    if (botonAgregar) {
+      botonAgregar.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(e);
+      });
+    }
+    slides.appendChild(clone);
+  });
+
+  function updateStep() {
+    return window.innerWidth <= 640 ? stepMobile : stepDesktop;
+  }
+
+  function updateTotalWidth() {
+    return totalProductos * updateStep();
+  }
+
+  function moveCarousel(direction) {
+    const step = updateStep();
+    const totalWidth = updateTotalWidth();
+    const maxPosition = -totalWidth;
+
+    currentPosition += direction * step;
+    if (currentPosition <= maxPosition) currentPosition = 0;
+    else if (currentPosition > 0) currentPosition = maxPosition;
+
+    slides.style.transition = 'transform 0.3s ease-in-out';
+    slides.style.transform = `translateX(${currentPosition}px)`;
+  }
+
+  const prevButton = document.getElementById(prevId);
+  const nextButton = document.getElementById(nextId);
+  if (prevButton) prevButton.addEventListener('click', () => moveCarousel(1));
+  if (nextButton) nextButton.addEventListener('click', () => moveCarousel(-1));
+
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    slides.style.transition = 'none';
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diffX = currentX - startX;
+    slides.style.transform = `translateX(${currentPosition + diffX}px)`;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startX;
+    currentPosition += diffX;
+
+    const totalWidth = updateTotalWidth();
+    if (currentPosition <= -totalWidth) currentPosition = 0;
+    if (currentPosition > 0) currentPosition = -totalWidth;
+
+    slides.style.transition = 'transform 0.3s ease-in-out';
+    slides.style.transform = `translateX(${currentPosition}px)`;
+  }, { passive: true });
+
+  let autoSlideCarousel = setInterval(() => moveCarousel(-1), 5000);
+  carousel.addEventListener('mouseenter', () => clearInterval(autoSlideCarousel));
+  carousel.addEventListener('mouseleave', () => {
+    autoSlideCarousel = setInterval(() => moveCarousel(-1), 5000);
+  });
+
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      currentPosition = 0;
+      slides.style.transform = `translateX(${currentPosition}px)`;
+      slides.style.width = `${updateTotalWidth() * 2}px`;
+    }, 200);
+  });
+
+  slides.style.width = `${updateTotalWidth() * 2}px`;
+}
+
+// Manejo del scroll para el header
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+if (header) {
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    header.classList.toggle('menu-hidden', scrollTop > lastScrollTop);
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+}
+
+// Menú hamburguesa
+const menuToggle = document.getElementById('menu-toggle');
+const menuContent = document.getElementById('menu-content');
+if (menuToggle && menuContent) {
+  menuToggle.addEventListener('click', () => {
+    menuContent.classList.toggle('active');
+  });
+}
+
+// Buscador en móvil
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.querySelector('#search-form button');
+if (searchForm && searchInput && searchButton) {
+  searchButton.addEventListener('click', (e) => {
+    if (window.innerWidth <= 640 && !searchForm.classList.contains('active')) {
+      e.preventDefault();
+      searchForm.classList.add('active');
+      searchInput.focus();
+    } else {
+      e.preventDefault();
+      performSearch();
+    }
+  });
+
+  searchInput.addEventListener('blur', () => {
+    if (window.innerWidth <= 640 && searchInput.value === '') {
+      searchForm.classList.remove('active');
+    }
+  });
+
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    performSearch();
+  });
+}
+
+// Categorías desplegables
+const categoriesBtn = document.querySelector('.categories-btn');
+const categoriesContainer = document.querySelector('.categories-container');
+const categoriesDropdown = document.querySelector('.categories-dropdown');
+if (categoriesBtn && categoriesContainer && categoriesDropdown) {
+  categoriesBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (window.innerWidth <= 640) {
+      categoriesContainer.classList.toggle('active');
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 640 && !categoriesContainer.contains(e.target)) {
+      categoriesContainer.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('.category-item').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      const searchResults = document.getElementById('search-results');
+      const sections = [
+        document.getElementById('uniformes-section'),
+        document.getElementById('clubes-section'),
+        document.getElementById('zapatillas-section'),
+        document.getElementById('accesorios-section')
+      ].filter(Boolean);
+
+      if (targetElement) {
+        sections.forEach(section => section && (section.style.display = 'block'));
+        if (searchResults) {
+          searchResults.classList.remove('active');
+          document.getElementById('search-results-container').innerHTML = '';
+        }
+        document.getElementById('search-input').value = '';
+
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const extraOffset = 57;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+        if (window.innerWidth <= 640) {
+          categoriesContainer.classList.remove('active');
+        }
+      }
+    });
+  });
+}
+
+// Inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  productosOriginales = Array.from(document.querySelectorAll('.producto'));
+  updateCartCount();
+  updatePrices();
+
+  document.getElementById('search-results-container').addEventListener('click', (e) => {
+    const button = e.target.closest('.boton-agregar');
+    if (button) {
+      e.preventDefault();
+      e.stopPropagation();
+      addToCart(e);
+    }
+  });
+
+  initializeBanner();
+
+  const carousels = [
+    { id: 'uniformes-carousel', slides: 'uniformes-slides', prev: 'uniformes-prev', next: 'uniformes-next' },
+    { id: 'clubes-carousel', slides: 'clubes-slides', prev: 'clubes-prev', next: 'clubes-next' },
+    { id: 'zapatillas-carousel', slides: 'zapatillas-slides', prev: 'zapatillas-prev', next: 'zapatillas-next' },
+    { id: 'accesorios-carousel', slides: 'accesorios-slides', prev: 'accesorios-prev', next: 'accesorios-next' }
+  ];
+  carousels.forEach(carousel => {
+    if (document.getElementById(carousel.id)) {
+      initializeCarousel(carousel.id, carousel.slides, carousel.prev, carousel.next);
+    }
+  });
+
+  document.querySelectorAll('.boton-agregar').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      addToCart(e);
+    });
+  });
+
+  const cartButton = document.getElementById('cart-button');
+  if (cartButton) {
+    cartButton.addEventListener('click', () => {
+      updateCartModal();
+      document.getElementById('cart-modal').style.display = 'flex';
+    });
+  }
+
+  const closeCart = document.getElementById('close-cart');
+  if (closeCart) {
+    closeCart.addEventListener('click', () => {
+      document.getElementById('cart-modal').style.display = 'none';
+    });
+  }
+
+  // Variable para almacenar los detalles temporales del pedido
+  const buyButton = document.getElementById('buy-button');
+  if (buyButton) {
+    buyButton.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('El carrito está vacío. Agrega productos antes de comprar.');
+        return;
+      }
+
+      let total = 0;
+      let orderDetails = '';
+      cart.forEach(item => {
+        const price = showUSD ? (item.price / 4000) : item.price;
+        orderDetails += `${item.name} - ${showUSD ? `$${price.toFixed(2)} USD` : price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}\n`;
+        total += price;
+      });
+      orderDetails += `Total: ${showUSD ? `$${total.toFixed(2)} USD` : total.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}`;
+
+      const confirmDetails = document.getElementById('confirm-details');
+      if (confirmDetails) confirmDetails.textContent = orderDetails;
+      document.getElementById('cart-modal').style.display = 'none';
+      document.getElementById('confirm-modal').style.display = 'flex';
+    });
+  }
+
+  // Registrar eventos de confirmación y cancelación a nivel global
+  const cancelConfirm = document.getElementById('cancel-confirm');
+  if (cancelConfirm) {
+    cancelConfirm.addEventListener('click', () => {
+      document.getElementById('confirm-modal').style.display = 'none';
+      document.getElementById('cart-modal').style.display = 'flex';
+    });
+  }
+
+  const closeConfirm = document.getElementById('close-confirm');
+  if (closeConfirm) {
+    closeConfirm.addEventListener('click', () => {
+      document.getElementById('confirm-modal').style.display = 'none';
+      document.getElementById('cart-modal').style.display = 'flex';
+    });
+  }
+
+  // Función para procesar y guardar pedido en Neon, luego redirigir a WhatsApp o Correo
+  async function processOrder(channel) {
+    const nameInput = document.getElementById('customer-name');
+    const emailInput = document.getElementById('customer-email');
+    const phoneInput = document.getElementById('customer-phone');
+
+    // Validaciones de formulario
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !phoneInput.value.trim()) {
+      alert('Por favor, rellene todos los campos obligatorios marcados con (*).');
+      return;
+    }
+
+    if (!emailInput.checkValidity()) {
+      alert('Por favor, introduzca una dirección de correo electrónico válida.');
+      return;
+    }
+
+    const customerName = nameInput.value.trim();
+    const customerEmail = emailInput.value.trim();
+    const customerPhone = phoneInput.value.trim();
+
+    // Desactivar botones durante el envío
+    const sendWhatsappBtn = document.getElementById('send-whatsapp');
+    const sendEmailBtn = document.getElementById('send-email');
+    const targetBtn = channel === 'whatsapp' ? sendWhatsappBtn : sendEmailBtn;
+    
+    const originalText = targetBtn.textContent;
+    targetBtn.textContent = 'Guardando Pedido...';
+    sendWhatsappBtn.disabled = true;
+    sendEmailBtn.disabled = true;
+
+    // Calcular totales
+    let total = 0;
+    let orderDetails = `Pedido de JEDYX SPORT:\n`;
+    orderDetails += `Cliente: ${customerName}\n`;
+    orderDetails += `Correo: ${customerEmail}\n`;
+    orderDetails += `Teléfono: ${customerPhone}\n\n`;
+    orderDetails += `Productos:\n`;
+    cart.forEach(item => {
+      const price = showUSD ? (item.price / 4000) : item.price;
+      orderDetails += `- ${item.name}: ${showUSD ? `$${price.toFixed(2)} USD` : price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}\n`;
+      total += price;
+    });
+    orderDetails += `\nTotal: ${showUSD ? `$${total.toFixed(2)} USD` : total.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}`;
+
+    let orderId = null;
+
+    try {
+      // Registrar el pedido en la base de datos Neon (PostgreSQL) usando Vercel Serverless Function
+      const response = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          customerName,
+          customerEmail,
+          customerPhone,
+          items: cart,
+          totalPrice: total,
+          currency: showUSD ? 'USD' : 'COP'
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        orderId = data.orderId;
+        console.log('Pedido guardado correctamente en Neon DB con ID:', orderId);
+        orderDetails = `Pedido ID: #${orderId}\n` + orderDetails;
+      } else {
+        console.error('Error al guardar en Neon DB:', data.error);
+      }
+    } catch (err) {
+      console.error('Error de conexión con la base de datos:', err);
+    }
+
+    // Reactivar botones
+    targetBtn.textContent = originalText;
+    sendWhatsappBtn.disabled = false;
+    sendEmailBtn.disabled = false;
+
+    // Limpiar carrito y ocultar modal
+    cart = [];
+    saveCart();
+    updateCartModal();
+    document.getElementById('confirm-modal').style.display = 'none';
+
+    // Redirigir al canal de comunicación correspondiente
+    if (channel === 'whatsapp') {
+      const whatsappNumber = '+573023218968';
+      const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(orderDetails)}`;
+      window.open(whatsappLink, '_blank');
+    } else {
+      const emailSubject = encodeURIComponent(`Nuevo Pedido #${orderId || ''} - JEDYX SPORT`);
+      const email = 'sportelite05@gmail.com';
+      const mailtoLink = `mailto:${email}?subject=${emailSubject}&body=${encodeURIComponent(orderDetails)}`;
+      window.location.href = mailtoLink;
+    }
+
+    showNotification(orderId ? `¡Pedido #${orderId} registrado y enviado!` : '¡Pedido enviado!');
+  }
+
+  // Escuchar clics en los botones finales de envío
+  const sendWhatsapp = document.getElementById('send-whatsapp');
+  if (sendWhatsapp) {
+    sendWhatsapp.addEventListener('click', () => processOrder('whatsapp'));
+  }
+
+  const sendEmail = document.getElementById('send-email');
+  if (sendEmail) {
+    sendEmail.addEventListener('click', () => processOrder('email'));
+  }
+
+  const currencyToggle = document.getElementById('currency-toggle');
+  if (currencyToggle) {
+    currencyToggle.addEventListener('click', () => {
+      showUSD = !showUSD;
+      currencyToggle.textContent = showUSD ? 'Cambiar a COP' : 'Cambiar a USD';
+      updatePrices();
+    });
+  }
+
+  // Manejar búsqueda desde URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchTerm = urlParams.get('search');
+  if (searchTerm) {
+    document.getElementById('search-input').value = searchTerm;
+    performSearch(searchTerm.toLowerCase().trim());
+  }
+
+  // Manejar desplazamiento a sección desde URL
+  const sectionId = urlParams.get('section');
+  if (sectionId) {
+    const targetElement = document.getElementById(sectionId);
+    const searchResults = document.getElementById('search-results');
+    const sections = [
+      document.getElementById('uniformes-section'),
+      document.getElementById('clubes-section'),
+      document.getElementById('zapatillas-section'),
+      document.getElementById('accesorios-section')
+    ].filter(Boolean);
+
+    if (targetElement) {
+      sections.forEach(section => section && (section.style.display = 'block'));
+      if (searchResults) {
+        searchResults.classList.remove('active');
+        document.getElementById('search-results-container').innerHTML = '';
+      }
+      document.getElementById('search-input').value = '';
+
+      setTimeout(() => {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const extraOffset = 57;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }, 100); // Retraso para asegurar que la página cargue completamente
+    }
+  }
+});
+    </script>
+
+
+</body>
+</html>
